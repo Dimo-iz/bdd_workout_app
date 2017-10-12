@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_one :room
 
+  has_many :messages
+
   after_create :create_chatroom
 
   self.per_page = 10
