@@ -16,7 +16,7 @@ RSpec.feature 'Editing an exercise' do
 
     click_link 'My Lounge'
 
-    path = "/user/#{@owner.id}/exercises/#{@owner_exercise.id}/edit"
+    path = "/users/#{@owner.id}/exercises/#{@owner_exercise.id}/edit"
 
     link = "a[href='#{path}']"
 
