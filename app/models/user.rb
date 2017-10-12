@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :exercises
+  has_many :exercises, dependent: :destroy
 
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
 
-  has_many :friends, through: :friendships, class_name: 'User'
+  has_many :friends, through: :friendships, dependent: :destroy, class_name: 'User'
 
   self.per_page = 10
   validates :first_name, presence: true
