@@ -11,7 +11,7 @@ RSpec.feature 'Showing friend workout' do
     login_as @john
 
     @e1 = @john.exercises.create(duration_in_min: 20, workout: 'My body building activity', workout_date: Date.today)
-    @e2 = @jsarah.exercises.create(duration_in_min: 55, workout: 'Weight lifting', workout_date: Date.today)
+    @e2 = @sarah.exercises.create(duration_in_min: 55, workout: 'Weight lifting', workout_date: Date.today)
 
     @following = Friendship.create(friend: @sarah, user: @john)
 
@@ -21,8 +21,9 @@ RSpec.feature 'Showing friend workout' do
     visit '/'
 
     click_link 'My Lounge'
+    click_link @sarah.full_name
 
-    expect(page).to have_content(@sarah.full_name + "'s Exercises'")
+    expect(page).to have_content(@sarah.full_name + "'s Exercises")
     expect(page).to have_content @e2.workout
     expect(page).to have_css 'div#chart'
 
